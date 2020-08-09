@@ -1,13 +1,14 @@
 from rest_framework import generics
 
-from .serializers import ProductSerializer, CategorySerializer, SubCategorySerializer, CategoryListSerializer
+from .serializers import ProductSerializer, CategorySerializer, SubCategorySerializer,\
+                         CategoryListSerializer
 from .models import Products, Categories, SubCategories
 
-class ProductManagement(generics.ListCreateAPIView):
+class ListCreateProduct(generics.ListCreateAPIView):
     """Insert a new product and return the list of products."""
 
     serializer_class = ProductSerializer
-    queryset = Products.objects.all()
+    queryset = Products.objects.all().select_related('sub_ctg_id', 'sub_ctg_id__ctg_id')
 
 class CategoryManagment(generics.RetrieveAPIView):
     """ Return subcategory list or product list for a category."""
