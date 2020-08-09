@@ -1,5 +1,5 @@
-const urlFor = (endpoint) => {
-    return `http://127.0.0.1:8000/shop/${endpoint}`;
+﻿const urlFor = (endpoint) => {
+    return `https://products-masters.herokuapp.com/shop/${endpoint}`;
    };
    
 export default urlFor;
